@@ -12,22 +12,6 @@
 (global-set-key (kbd "C-c i") 'point-to-register)  ;;insert current postion into register
 (global-set-key (kbd "C-c j") 'jump-to-register)   ;;jump into register position
 
-;;insert empty line blow/above current point
-(defun insert-line-below ()
-  "Insert an empty line below the current line."
-  (interactive)
-  (save-excursion
-    (end-of-line)
-    (open-line 1)))
-
-(defun insert-line-above ()
-  "Insert an empty line above the current line."
-  (interactive)
-  (save-excursion
-    (end-of-line 0)
-    (open-line 1)))
-
-
 (global-set-key (kbd "C-c a") 'insert-line-above)
 (global-set-key (kbd "C-c b") 'insert-line-below)  
 

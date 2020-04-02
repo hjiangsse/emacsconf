@@ -70,7 +70,7 @@
 (add-hook 'go-mode-hook 'auto-complete-for-go)
 (add-hook 'go-mode-hook 'go-mode-setup)
 (add-hook 'go-mode-hook 'electric-pair-mode)
-()setq electric-pair-preserve-balance nil)
+(setq electric-pair-preserve-balance nil)
 ;;(add-hook 'go-mode-hook 'flyspell-for-go)
 
 (with-eval-after-load 'go-mode
