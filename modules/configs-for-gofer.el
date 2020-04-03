@@ -16,36 +16,6 @@
 (add-to-list 'exec-path "/usr/local/go/bin/go")
 (add-to-list 'exec-path "/home/hjiang/go/bin")
 
-
-;;(defun my-go-mode-hook ()
-;;  ; Use goimports instead of go-fmt
-;;  (setq gofmt-command "goimports")
-;;  ; Call Gofmt before saving
-;;  (add-hook 'before-save-hook 'gofmt-before-save)
-;;  ; Customize compile command to run go build
-;;  (if (not (string-match "go" compile-command))
-	  ;;(set (make-local-variable 'compile-command)
-		   ;;"go build -v && go test && go vet"))
-  ;;; Godef jump key binding
-  ;;(local-set-key (kbd "M-.") 'godef-jump)
-  ;;(local-set-key (kbd "M-,") 'pop-tag-mark)
-  ;;(local-set-key (kbd "M-p") 'compile)
-  ;;(local-set-key (kbd "M-P") 'recompile)
-  ;;(local-set-key (kbd "M-]") 'next-error)
-  ;;(local-set-key (kbd "M-[") 'previous-error))
-;;
-;;(add-hook 'go-mode-hook 'my-go-mode-hook)
-;;
-;;;;auto complete mode for golang
-;;(use-package auto-complete)
-;;(defun auto-complete-for-go ()
-;;  (auto-complete-mode 1))
-;;(add-hook 'go-mode-hook 'auto-complete-for-go)
-;;
-;;(use-package go-autocomplete)
-;;(with-eval-after-load 'go-mode
-;;  (require 'go-autocomplete))
-
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'go-eldoc)
@@ -80,3 +50,8 @@
   "insert golang source template"
   (interactive)
   (insert-file-contents "~/.emacs.d/templates/golang.txt"))
+
+(defun insert-golang-ddt-template ()
+  "insert golang data drive test template"
+  (interactive)
+  (insert-file-contents "~/.emacs.d/templates/golang_ddt.txt"))
