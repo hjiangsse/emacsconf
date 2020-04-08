@@ -5,6 +5,9 @@
 (setq custom-file "~/.emacs.d/custom-settings.el")
 (load custom-file t)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (add-to-list 'load-path "~/.emacs.d/utils/")
 (load "~/.emacs.d/utils/small-utils.el")
 
