@@ -35,7 +35,7 @@
 	(insert "#+BEGIN_SRC")
 	(newline-and-indent)
 	(newline-and-indent)
-    (next-line)
+    (previous-line)
 	(move-forward-n-char line-begin-dist)
 	(insert "#+END_SRC")
 	(goto-char old-pos)))
