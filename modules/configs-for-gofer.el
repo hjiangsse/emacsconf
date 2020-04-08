@@ -12,10 +12,6 @@
 
 (when window-system (set-exec-path-from-shell-PATH))
 
-(setenv "GOPATH" "/home/hjiang/go")
-(add-to-list 'exec-path "/usr/local/go/bin/go")
-(add-to-list 'exec-path "/home/hjiang/go/bin")
-
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'go-eldoc)
