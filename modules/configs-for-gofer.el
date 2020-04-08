@@ -55,3 +55,7 @@
   "insert golang data drive test template"
   (interactive)
   (insert-file-contents "~/.emacs.d/templates/golang_ddt.txt"))
+
+;;;---------------------------------golang lint---------------------------------
+(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
+(require 'golint)
