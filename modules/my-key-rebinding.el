@@ -15,4 +15,4 @@
 (global-set-key (kbd "C-c a") 'insert-line-above)
 (global-set-key (kbd "C-c b") 'insert-line-below)  
 
-(find-file "~/.emacs.d/module/my-key-rebinding.el")
+(find-file "~/.emacs.d/modules/my-key-rebinding.el")
