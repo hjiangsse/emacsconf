@@ -21,8 +21,8 @@
 (setq rust-format-on-save t)
 
 ;;;------------------------------------racer------------------------------------
-(setq racer-cmd "~/.cargo/bin/racer")
-(setq recer-rust-src-path "~/Code/rust/src")
+(setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
+(setq recer-rust-src-path (concat (getenv "HOME") "/Code/rust/src"))
 
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
