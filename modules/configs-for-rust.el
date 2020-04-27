@@ -35,3 +35,21 @@
 ;;;--------------------------------flycheck-rust--------------------------------
 (add-hook 'rust-mode-hook #'flycheck-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+;;;-----------------------add documentation for rust code-----------------------
+(defun comment-rust-region-follow ()
+  ;;comment the code follow current region
+  (interactive)
+  (general-comment-region "///"))
+
+(defun comment-rust-region-contain ()
+  ;;comment the code contain current region
+  (interactive)
+  (general-comment-region "//!"))
+
+;;;------------------------------rust local setup-------------------------------
+(defun rust-local-setup ()
+  (local-set-key (kbd "C-c m") #'comment-rust-region-follow)
+  (local-set-key (kbd "C-c c") #'comment-rust-region-contain))
+
+(add-hook 'rust-mode-hook #'rust-local-setup)
