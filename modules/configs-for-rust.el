@@ -53,14 +53,3 @@
   (local-set-key (kbd "C-c c") #'comment-rust-region-contain))
 
 (add-hook 'rust-mode-hook #'rust-local-setup)
-
-;;;-------------------------hide and show code for rust-------------------------
-;;(defun hs-mode-setup()
-;;  ;;set up for hide show code block mode
-;;  (local-set-key (kbd "<f5>") 'hs-show-all)
-;;  (local-set-key (kbd "<f6>") 'hs-hide-all)
-;;  (local-set-key (kbd "<f7>") 'hs-show-block)
-;;  (local-set-key (kbd "<f8>") 'hs-hide-block))
-
-(add-hook 'rust-mode-hook 'hs-minor-mode)
-(add-hook 'rust-mode-hook 'hs-mode-setup)

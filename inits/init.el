@@ -29,3 +29,4 @@
 
 (setq inferior-lisp-program "sbcl")
 
+(put 'narrow-to-region 'disabled nil)
