@@ -20,12 +20,19 @@
 
 (defun go-mode-setup()
   (setq compile-command "go build -v && go test -v && go vet && golint")
-  (define-key (current-local-map) "\C-c\C-c" 'compile)
+  ;;(define-key (current-local-map) "\C-c\C-c" 'compile)
   (go-eldoc-setup)
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-,") 'pop-tag-mark))
+
+(defun hs-mode-setup()
+  ;;set up for hide show code block mode
+  (local-set-key (kbd "<f5>") 'hs-show-all)
+  (local-set-key (kbd "<f6>") 'hs-hide-all)
+  (local-set-key (kbd "<f7>") 'hs-show-block)
+  (local-set-key (kbd "<f8>") 'hs-hide-block))
 
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
@@ -38,6 +45,9 @@
 (add-hook 'go-mode-hook 'electric-pair-mode)
 (setq electric-pair-preserve-balance nil)
 ;;(add-hook 'go-mode-hook 'flyspell-for-go)
+
+(add-hook 'go-mode-hook 'hs-minor-mode) ;;hide or show block of code
+(add-hook 'go-mode-hook 'hs-mode-setup) ;;hide and show mode setup for golang
 
 (with-eval-after-load 'go-mode
    (require 'go-autocomplete))
