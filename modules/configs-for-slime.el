@@ -1,3 +1,5 @@
+(setq inferior-lisp-program "sbcl")
+
 (add-to-list 'ac-modes 'slime-mode)
 (add-to-list 'ac-modes 'lisp-mode)
 (add-to-list 'ac-modes 'common-lisp-mode)

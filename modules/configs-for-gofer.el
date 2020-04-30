@@ -1,6 +1,7 @@
 (use-package go-mode)
 (use-package exec-path-from-shell)
 
+;;;------------------------set exec path from shell path------------------------
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (replace-regexp-in-string
 						  "[ \t\n]*$"
@@ -12,20 +13,21 @@
 
 (when window-system (set-exec-path-from-shell-PATH))
 
+(require 'go-projectile)
+(require 'gotest)
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'go-eldoc)
 (require 'auto-complete-config)
 (require 'golint)
 
+;;;-------------------------add some setup for go mode--------------------------
 (defun go-mode-setup()
-  (setq compile-command "go build -v && go test -v && go vet && golint")
-  (define-key (current-local-map) "\C-c\C-c" 'compile)
-  (go-eldoc-setup)
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-,") 'pop-tag-mark))
+	(go-eldoc-setup)
+	(setq gofmt-command "goimports")
+	(add-hook 'before-save-hook 'gofmt-before-save)
+	(local-set-key (kbd "M-.") 'godef-jump)
+	(local-set-key (kbd "M-,") 'pop-tag-mark))
 
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
@@ -33,9 +35,18 @@
 (defun flyspell-for-go ()
   (flyspell-mode 1))
 
+(defun running-and-testing ()
+  "running and testing current file"
+  (local-set-key (kbd "C-c C-c C-r") 'go-run)
+  (local-set-key (kbd "C-c .") 'go-test-current-test)
+  (local-set-key (kbd "C-c m") 'go-test-current-file)
+  (local-set-key (kbd "C-c a") 'go-test-current-project))
+
 (add-hook 'go-mode-hook 'auto-complete-for-go)
 (add-hook 'go-mode-hook 'go-mode-setup)
 (add-hook 'go-mode-hook 'electric-pair-mode)
+(add-hook 'go-mode-hook 'running-and-testing)
+
 (setq electric-pair-preserve-balance nil)
 ;;(add-hook 'go-mode-hook 'flyspell-for-go)
 
