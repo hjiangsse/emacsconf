@@ -47,9 +47,14 @@
   (interactive)
   (general-comment-region "//!"))
 
+(defun comment-rust-code-block ()
+  ;;commet a rust code block
+  (interactive)
+  (general-comment-blocks "/*"))
 ;;;------------------------------rust local setup-------------------------------
 (defun rust-local-setup ()
   (local-set-key (kbd "C-c m") #'comment-rust-region-follow)
-  (local-set-key (kbd "C-c c") #'comment-rust-region-contain))
+  (local-set-key (kbd "C-c c") #'comment-rust-region-contain)
+  (local-set-key (kbd "C-c b") #'comment-rust-code-block))
 
 (add-hook 'rust-mode-hook #'rust-local-setup)

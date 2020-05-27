@@ -63,6 +63,28 @@
   (interactive)
   (insert-file-contents "~/.emacs.d/templates/golang_ddt.txt"))
 
+;;;-----------------------test benching function at point-----------------------
+(defun benching-at-point()
+  ;;benching the function at point
+  (interactive)
+  (let* ((curr-func-name (get-word-on-point))
+		 (bench-cmd (concat "go test -bench=" curr-func-name " .")))
+	(shell-command bench-cmd)))
+
+(defun benching-all ()
+  ;;benching all the benchmark function in current file
+  (interactive)
+  (let ((bench-cmd (concat "go test -bench=. .")))
+	(shell-command bench-cmd)))
+
+(defun benching-golang ()
+  "running and testing current file"
+  (local-set-key (kbd "C-c C-c C-b") 'benching-at-point)
+  (local-set-key (kbd "C-c C-c C-a") 'benching-all))
+
+(add-hook 'go-mode-hook 'benching-golang)
+
 ;;;---------------------------------golang lint---------------------------------
 (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
 (require 'golint)
+

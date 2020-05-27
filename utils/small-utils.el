@@ -40,12 +40,6 @@
 	(insert "#+END_SRC")
 	(goto-char old-pos)))
 
-(defun get-file-contents (filename)
-  "return the content of FILENAME"
-  (with-temp-buffer
-	(insert-file-contents filename)
-	(buffer-string)))
-
 ;;;----------------------insert empty line below or above-----------------------
 (defun insert-empty-line-below ()
   "insert an empty line below current position"
@@ -74,23 +68,25 @@
 	  (beginning-of-line)
 	  (setf end-region (+ (length comment) end-region)))))
 
-;;;-------------------------------miscellaneous--------------------------------
-(defun move-forward-n-char (n)
-  (dotimes (i n)
-	(insert " ")))
-
-(defun insert-code-snippet ()
-  "insert a code snippet in current position"
-  (interactive)
-  (let ((old-pos (point))
-		(line-begin-dist (- (point) (line-beginning-position))))
-	(insert "#+BEGIN_SRC")
+(defun general-comment-blocks (cmt)
+  ;;comment a block of code using the "cmt" string
+  (let ((rgend (region-end)))
+	(goto-char (region-beginning))
+	(insert cmt)
 	(newline-and-indent)
-    (next-line)
-	(move-forward-n-char line-begin-dist)
-	(insert "#+END_SRC")
-	(goto-char old-pos)))
+	(goto-char rgend)
+	(next-line)
+	(beginning-of-line)
+	(insert (reverse cmt))
+	(new-line-and-indent)))
 
+;;;----------------------------get word under point-----------------------------
+(defun get-word-on-point()
+  (interactive)
+  (let ((word (thing-at-point 'word 'no-properties)))
+	word))
+
+;;;-------------------------------miscellaneous--------------------------------
 (defun get-file-contents (filename)
   "return the content of FILENAME"
   (with-temp-buffer
