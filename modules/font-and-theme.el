@@ -49,3 +49,30 @@
   (use-package color-theme-sanityinc-tomorrow)
   (load-theme 'sanityinc-tomorrow-eighties t))
 
+;;;--------------------------------switch themes--------------------------------
+(setq themes-lst (list #'load-zen-burn-theme
+                      #'load-zen-solarized-theme-dark
+                      #'load-zen-solarized-theme-light
+                      #'load-sanityinc-tomorrow-day
+                      #'load-sanityinc-tomorrow-night
+                      #'load-sanityinc-tomorrow-blue
+                      #'load-sanityinc-tomorrow-bright
+                      #'load-sanityinc-tomorrow-eighties))
+
+
+(defvar curr-theme-index 0)
+(defvar switch-themes-index nil)
+
+(let ((curr-theme-index 0))
+  (setq switch-themes-index
+        (lambda ()
+          (if (= (1+ curr-theme-index) (safe-length themes-lst))
+              (setq curr-theme-index 0)
+            (setq curr-theme-index (1+ curr-theme-index))))))
+
+(defun switch-themes ()
+  "Switch themes in theme-lst"
+  (interactive)
+  (funcall (nth (funcall switch-themes-index) themes-lst)))
+
+(global-set-key [(f5)] 'switch-themes)
