@@ -1,4 +1,3 @@
-;; emacs start
 (require 'package)
 (package-initialize)
 (setq use-package-always-ensure t)
@@ -16,10 +15,11 @@
 (load "small-utils.el")
 
 ;;;----------------------------load my config files-----------------------------
+(load "package-source-setting.el")
+(load "configs-for-edit-habbit.el")
 (load "back-history-window.el")
 (load "configs-for-org.el")
 (load "font-and-theme.el")
-(load "package-source-setting.el")
 (load "chinese-input-method.el")
 (load "configs-for-rust.el")
 (load "helm-in-emacs.el")
@@ -27,6 +27,7 @@
 (load "some-basic-configs.el")
 (load "configs-for-gofer.el")
 (load "configs-for-slime.el")
+(load "configs-for-haskell.el")
 (load "org-bullets-setting.el")
 (load "use-package-setting.el")
 

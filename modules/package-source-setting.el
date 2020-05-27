@@ -20,3 +20,4 @@ There are two things you can do about this warning:
 
 (unless (assoc-default "org" package-archives)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+
