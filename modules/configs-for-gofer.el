@@ -21,6 +21,7 @@
 (require 'auto-complete-config)
 (require 'golint)
 
+(ac-config-default)
 ;;;-------------------------add some setup for go mode--------------------------
 (defun go-mode-setup()
 	(go-eldoc-setup)

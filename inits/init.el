@@ -16,6 +16,8 @@
 
 ;;;----------------------------load my config files-----------------------------
 (load "package-source-setting.el")
+(load "configs-for-flycheck.el")
+(load "cycle-buffer.el")
 (load "configs-for-edit-habbit.el")
 (load "back-history-window.el")
 (load "configs-for-org.el")
@@ -25,6 +27,7 @@
 (load "helm-in-emacs.el")
 (load "my-key-rebinding.el")
 (load "some-basic-configs.el")
+(load "go-autocomplete.el")
 (load "configs-for-gofer.el")
 (load "configs-for-slime.el")
 (load "configs-for-haskell.el")

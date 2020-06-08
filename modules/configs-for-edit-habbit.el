@@ -18,7 +18,6 @@
 (window-number-meta-mode)
 
 ;;;--------------switch to next/previous buffer with a single key---------------
-;;(use-package cycle-buffer)
 (autoload 'cycle-buffer "cycle-buffer"
   "Cycle forward." t)
 (autoload 'cycle-buffer-backward "cycle-buffer"
