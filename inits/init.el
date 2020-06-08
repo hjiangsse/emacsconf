@@ -16,6 +16,7 @@
 
 ;;;----------------------------load my config files-----------------------------
 (load "package-source-setting.el")
+(load "configs-for-tags.el")
 (load "configs-for-flycheck.el")
 (load "cycle-buffer.el")
 (load "configs-for-edit-habbit.el")
